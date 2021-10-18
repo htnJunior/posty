@@ -22,18 +22,26 @@
             </li>
         </ul>
         <ul class="flex items-center">
-            <li class="p-3">
-                <a href="">Helington Oliveira</a>
-            </li>
-            <li class="p-3">
-                <a href="">Login</a>
-            </li>
-            <li class="p-3">
-                <a href="">Register</a>
-            </li>
-            <li class="p-3">
-                <a href="">Logout</a>
-            </li>
+            @auth
+                <li class="p-3">
+                    <a href="">Helington Oliveira</a>
+                </li>
+                <li>
+                    <form action="{{route('logout')}}" method="post">
+                        @csrf
+                        <button class="p-3">Logout</button>
+                    </form>
+                </li>
+            @endauth
+            @guest
+                <li class="p-3">
+                    <a href="{{ route('login') }}">Login</a>
+                </li>
+                <li class="p-3">
+                    <a href="{{ route('register') }}">Register</a>
+                </li>
+            @endguest
+
         </ul>
     </nav>
 
